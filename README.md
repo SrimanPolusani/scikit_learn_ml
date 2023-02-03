@@ -3,6 +3,6 @@
 <p>This project is built to do multiple linear regression models with Scikit-learn in Python. The training data is spread evenly in the graph with z-score normalization. Then gradient descent is conducted to find the values of w and b (parameters). It can predict target values and can also visualize the overall accuracy of the model using matplotlib.</p>
 <h3>This project is built using the following tools:</h3>
 <ol>
-  <li>Frameworks & Modules: Scikit-learn, Numpy, Mathplotlib</li>
+  <li>Frameworks & Modules: Scikit-learn, Numpy, Matplotlib</li>
   <li>Backend: Python 3</li>
 </ol>

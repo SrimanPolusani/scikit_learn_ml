@@ -70,8 +70,7 @@ class LinearRegressor:
                     100 - ((100 * y_pred) / self.y_train)
                 )
             )
-        )
-        )
+        ))
         return y_pred_sgdr
 
     # <---Visualizes accuracy of the model--->

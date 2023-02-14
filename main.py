@@ -121,7 +121,7 @@ class LogisticRegressor:
         return y_pred
 
     def visualize_results(self):
-        fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+        fig, axes = plt.subplots(1, 2, figsize=(8, 4))
         for axis_num, axis in enumerate(axes):
             axis.scatter(self.X_train[0:, axis_num], self.y_train, color=X_COLORS[axis_num][0], s=100, label='Actual')
             axis.scatter(self.X_train[0:, axis_num], self.make_predictions(), color=X_COLORS[axis_num][1], s=25,

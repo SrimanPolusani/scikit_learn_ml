@@ -7,7 +7,10 @@ from sklearn.preprocessing import StandardScaler
 
 FEATURE_NAMES = ['size(sqft)', 'bedrooms', 'floors', 'age']
 # Let's make our data visualization very colorful.
-X_COLORS = [['#60100B', '#E3242B'], ['#354A21', '#3CB043'], ['#710193', '#365FCF'], ['#1F456E', '#63C5DA']]
+X_COLORS = [
+    ['#60100B', '#E3242B'], ['#354A21', '#3CB043'],
+    ['#710193', '#365FCF'], ['#1F456E', '#63C5DA']
+]
 
 # Logistic Regression data
 X = np.array([[0.5, 1.5], [1, 1], [1.5, 0.5], [3, 0.5], [2, 2], [1, 2.5]])
@@ -59,7 +62,11 @@ class LinearRegressor:
 
         y_pred_sgdr = self.sgdr.predict(self.X_norm)
         y_pred = np.dot(self.X_norm, w) + b
-        print("Is sgdr prediction and np.dot() prediction same?: {}".format((y_pred_sgdr == y_pred).all()))
+        print(
+            "Is sgdr prediction and np.dot() prediction same?: {}".format(
+                (y_pred_sgdr == y_pred).all()
+            )
+        )
         print("Predicted values: {}".format(y_pred[:6]))
         print("Actual values: {}".format(self.y_train[:6]))
 
@@ -83,13 +90,20 @@ class LinearRegressor:
             for j in range(len(axes)):
                 if i == 1:
                     k = 1
-                # Logic behind adding k: Index of row in X_train is equal to sum of i and j. PLUS '1' additionally when i = 1.
+                # Logic behind adding k: Index of row in X_train is equal to sum of i and j.
+                # PLUS '1' additionally when i = 1.
                 # (i,j) --> [(0,0), (0,1), (1,0), (1,1)] = [0, 1, 2, 3]  <--- index of rows
                 index = i + j + k
-                axes[i, j].scatter(self.X_train[:, index], self.y_train, color=X_COLORS[index][0], label='Actual')
+                axes[i, j].scatter(
+                    self.X_train[:, index], self.y_train,
+                    color=X_COLORS[index][0], label='Actual'
+                )
                 axes[i, j].set_xlabel(FEATURE_NAMES[index])
                 axes[i, j].set_ylabel('Price')
-                axes[i, j].scatter(self.X_train[:, index], predictions, color=X_COLORS[index][1], label='Predicted')
+                axes[i, j].scatter(
+                    self.X_train[:, index], predictions,
+                    color=X_COLORS[index][1], label='Predicted'
+                )
                 axes[i, j].legend()
 
         fig.suptitle('Accuracy of linear regression with zscore normalization')
@@ -122,9 +136,14 @@ class LogisticRegressor:
     def visualize_results(self):
         fig, axes = plt.subplots(1, 2, figsize=(8, 4))
         for axis_num, axis in enumerate(axes):
-            axis.scatter(self.X_train[0:, axis_num], self.y_train, color=X_COLORS[axis_num][0], s=100, label='Actual')
-            axis.scatter(self.X_train[0:, axis_num], self.make_predictions(), color=X_COLORS[axis_num][1], s=25,
-                         label='Predicted')
+            axis.scatter(
+                self.X_train[0:, axis_num], self.y_train,
+                color=X_COLORS[axis_num][0], s=100, label='Actual'
+            )
+            axis.scatter(
+                self.X_train[0:, axis_num], self.make_predictions(),
+                color=X_COLORS[axis_num][1], s=25, label='Predicted'
+            )
             axis.set_xlabel('$X_{}$'.format(axis_num))
             axis.set_ylabel('Y')
             axis.set_title('Predicted Vs Actual Values')
